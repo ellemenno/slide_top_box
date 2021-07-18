@@ -33,4 +33,4 @@ slide_top_box(
 
 [openscadpath]: https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Library_Locations "OpenSCAD User Manual / Libraries"
 [slide_top_box]: ./slide_top_box.scad "slide top box scad module"
-[thumbnail]: ./slide_top_box_defaults.png "rendering of the slide top box with default parameter values"
+[thumbnail]: ./slide_top_box-defaults.png "rendering of the slide top box with default parameter values"
