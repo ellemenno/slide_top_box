@@ -5,7 +5,7 @@ openscad module for a sliding dovetail lidded box
 
 ## usage
 
-```
+```scad
 use <slide_top_box.scad>
 
 slide_top_box(
