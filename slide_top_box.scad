@@ -1,7 +1,7 @@
 
 module slide_top_box(
 	// parameterized box with sliding dovetail top
-	// v1.0.0
+	// v1.1.0
 	size=[80, 110, 30], // x (width), y (length), z (height)
 	thickness=4, // walls and lid
 	lid_inset=0, // distance from top of box to top of lid (0 for flush)
