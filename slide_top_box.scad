@@ -5,7 +5,8 @@ module slide_top_box(
 	size=[80, 110, 30], // x (width), y (length), z (height)
 	thickness=4, // walls and lid
 	lid_inset=0, // distance from top of box to top of lid (0 for flush)
-	has_finger_recess=true // optional finger grip indent
+	has_finger_recess=true, // optional finger grip indent
+	is_interior_size=false, // when true, size defines interior volume, walls extend beyond
 ) {
   
 	module box(size, thickness) {
@@ -62,20 +63,21 @@ module slide_top_box(
 		};
 	}
 
-	lid_size = [size.x, size.y, thickness];
+	box_size = is_interior_size ? size + [thickness*2, thickness*2, thickness*2] : size;
+	lid_size = [box_size.x, box_size.y, thickness];
 	lid_groove = thickness / 3; // how deep into the box wall should the lid groove cut
-	lid_recess = has_finger_recess ? [size.x / 3, size.y / 4, thickness / 2] : undef; // use undef for none
+	lid_recess = has_finger_recess ? [box_size.x / 3, box_size.y / 4, thickness / 2] : undef; // use undef for none
 
 	// box
 	difference () {
-	  box(size=size, thickness=thickness);
+	  box(size=box_size, thickness=thickness);
 	  // subtract lid to create sliding groove
-	  translate([0, 0, size.z - lid_inset - lid_size.z])
+	  translate([0, 0, box_size.z - lid_inset - lid_size.z])
 	    lid(size=lid_size, ridge=lid_groove);
 	}
 
 	// lid, next to box
-	translate([size.x, 0, 0])
+	translate([box_size.x, 0, 0])
 		lid(size=lid_size, ridge=lid_groove, recess=lid_recess);
 
 }
