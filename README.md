@@ -9,19 +9,22 @@ openscad module for a sliding dovetail lidded box
 use <slide_top_box.scad>
 
 slide_top_box(
-  size=[80, 110, 30], // x (width), y (length), z (height)
-  thickness=4, // walls and lid
-  lid_inset=0, // how far from the top of the box should the top of the lid be (0 for flush)
-  has_finger_recess=true // optional finger grip indent
+  size=[80, 110, 30],
+  thickness=4,
+  lid_inset=0,
+  has_finger_recess=true,
+  is_interior_size=false,
 )
 ```
 
 ### parameters
 
-- **size** - an x,y,z vector defining the outer dimensions of the box
-- **thickness** - thickness of the walls and lid (reduces interior volume)
+- **size** - an x,y,z vector defining dimensions of the box
+- **thickness** - thickness of the walls and lid (reduces interior volume unless `is_interior_size` is `true`)
 - **lid_inset** - distance from top of box to top of lid; `0` for flush
 - **has_finger_recess** - `true` to add finger grip on lid, `false` for none
+- **is_interior_size** - when `true`, size defines interior volume, walls extend beyond
+
 
 ## installation
 
